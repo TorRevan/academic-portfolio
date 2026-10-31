@@ -1,36 +1,51 @@
+
 ---
 import { NAV_LINKS, PAGES } from "../../config";
 
 const currentPath = Astro.url.pathname;
+
+const visibleLinks = NAV_LINKS.filter((link) => {
+  const isHome = link.href === "/";
+  const pageKey = isHome
+    ? "home"
+    : link.href.split("/").filter(Boolean)[0];
+
+  const pageConfig = (PAGES as any)[pageKey];
+
+  return link.isActive !== false && pageConfig?.active !== false;
+});
 ---
 
-<nav class="navbar">
+<header class="site-header">
+
+  <a href="/" class="site-wordmark">
+    <span class="site-wordmark-name">
+      Mark Justine N. Revano
+    </span>
+    <span class="site-wordmark-subtitle">
+      Science Education · Scholarship · Innovation
+    </span>
+  </a>
+
+  <nav class="navbar" aria-label="Main navigation">
     <ul class="nav-links">
-        {
-            NAV_LINKS.filter((link) => {
-                const isHome = link.href === "/";
-                const pageKey = isHome
-                    ? "home"
-                    : link.href.split("/").filter(Boolean)[0];
-                const pageConfig = (PAGES as any)[pageKey];
-                return link.isActive !== false && pageConfig?.active !== false;
-            }).map((link) => (
-                <li>
-                    <a
-                        href={link.href}
-                        class={`nav-link ${
-                            currentPath === link.href ||
-                            (link.href !== "/" &&
-                                currentPath.startsWith(link.href))
-                                ? "active"
-                                : "inactive"
-                        }`}
-                    >
-                        {link.label}
-                        <span class="nav-link-line" />
-                    </a>
-                </li>
-            ))
-        }
+      {visibleLinks.map((link) => (
+        <li>
+          <a
+            href={link.href}
+            class={`nav-link ${
+              currentPath === link.href ||
+              (link.href !== "/" && currentPath.startsWith(link.href))
+                ? "active"
+                : "inactive"
+            }`}
+          >
+            {link.label}
+            <span class="nav-link-line" />
+          </a>
+        </li>
+      ))}
     </ul>
-</nav>
+  </nav>
+
+</header>

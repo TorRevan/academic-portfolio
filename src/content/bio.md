@@ -1,28 +1,22 @@
 ---
-name: "Claude Shannon"
-avatar: "shannon.jpg"
-shortBio: "Mathematician and electrical engineer known as the 'Father of Information Theory'. Pioneer in digital computing and cryptography."
-institution: "MIT, Cambridge MA"
+name: "Mark Justine Revano"
+avatar: "mark-revano.jpg"
+shortBio: "Science Educator and Independent Scholar."
+institution: "University of Southeastern Philippines"
 ---
 
-I am a mathematician and electrical engineer best known for founding **Information Theory**. My work in the late 1940s established the theoretical foundations of modern digital communications and computing.
+I am a science educator and independent scholar with a Bachelor of Secondary Education major in Science from the University of Southeastern Philippines (USeP), where I graduated cum laude and was a DOST-SEI scholar.
 
-## My Life
+## The Scholarly Path
 
-Born in Petoskey, Michigan on April 30, 1916, I showed an early aptitude for engineering and mathematics. After studying at the University of Michigan, I completed my PhD at MIT where I famously applied Boolean algebra to electrical circuits. My master's thesis on relay switching circuits is considered one of the most important master's theses ever written.
+As an undergraduate student, I have been able to publish several research articles in internationally recognized journals indexed in Scopus and Web of Science. Beyond conducting research, I've contributed to the broader academic community by being a member of an editorial board and a peer reviewer for international journals and occasionally serving as a resource speaker and research panelist at local academic institutions. Due to my sustained efforts  and deep relationship to scholarship, I was recognized by the Teacher Education Council as one of three national Pre-Service Teacher Research Champions under the first-ever TEC Teachers Awards.
 
-During World War, I worked at Bell Labs on fire control systems and cryptography, which led to my seminal work in information theory.
+## Research Interests and Current Work
 
-## Current Work
+My work spans various topics, including addressing chemistry misconceptions, using smartphone sensors as mobile laboratories, and intellectual life, with particular experience in intervention development, systematic reviews, meta-analysis, and scientometrics.
 
-I continue to work on various problems at the intersection of mathematics, engineering, and computer science. My interests include artificial intelligence, pattern recognition, game theory, and the fundamental limits of computation.
-
-I also enjoy juggling, unicycling, and playing the clarinet - I even built a juggling machine!
-
-## Research Interests
-
-My research focus includes: **Information Theory**, **Cryptography**, **Digital Computing**, **Artificial Intelligence**, **Game Theory**, and **Switching Circuits**.
+I currently work with former professors and academics around the country to advance research initiatives in science education!
 
 ---
 
-*"I am a mathematician. I am interested in the fundamental limits on the rate at which information can be transmitted."*
+*"Science is like sex: sometimes something useful comes out, but that is not the reason we are doing it." - Richard Feynman*
