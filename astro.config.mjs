@@ -18,7 +18,7 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
   },
-  site: 'https://rubzip.github.io',
+  site: 'https://mjrevano.vercel.app',
   base: '/',
   integrations: [sitemap()],
 });
