@@ -1,14 +1,253 @@
+
 ---
-import BaseListing from "../../layouts/BaseListing.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { PAGES } from "../../config";
 
 if (PAGES.talks.isActive === false) {
-    return Astro.redirect("/404");
+  return Astro.redirect("/404");
 }
+
+const invitedTalks = [
+  {
+    date: "November 7, 2026",
+    role: "Speaker",
+    title: "Creative Minds, Creative Teachers, Using Research to Transform Learning",
+    event: "Teacher Education Council (TEC)",
+    url: "https://www.facebook.com/TeacherEducationCouncil",
+    upcoming: true,
+  },
+  {
+    date: "November 5–6, 2026",
+    role: "Speaker",
+    title: "Research Without Fear: Seeing Opportunities Beyond the Paper",
+    event: "Holy Cross College of Sasa, Inc.",
+    url: "https://www.facebook.com/share/p/1G2TLTgx5P/",
+    upcoming: true,
+  },
+  {
+    date: "May 13, 2026",
+    role: "Speaker",
+    title: "Transforming R&D Initiatives for Research Paper Publication in Q1 and Q2 Journals of Elsevier and Scopus-Indexed Journals",
+    event: "USeP College of Agriculture and Related Sciences",
+  },
+  {
+    date: "April 18, 2026",
+    role: "Speaker",
+    title: "Systematic Literature Review and Publication of Research Paper",
+    event: "Lecture Series on Thesis and Dissertation Writing, USeP Graduate School of Teacher Education and Technology",
+  },
+  {
+    date: "November 14, 2024",
+    role: "Speaker",
+    title: "Academic Survival",
+    event: "Group Guidance Session for College of Education Students, USeP University Assessment and Guidance Center",
+  },
+];
+
+const researchPresentations = [
+  {
+    date: "August 8, 2025",
+    role: "Paper Presenter",
+    title: "From Pocket to Physics: Unlocking the Potential of Smartphone Sensors to Enhance Science Learning",
+    event: "Lecture-Seminar on STEAM Education: Local Context, Global Solution, USeP College of Education",
+  },
+  {
+    date: "August 8, 2025",
+    role: "Paper Presenter",
+    title: "Ask-Ploration Journal: Facilitating Student Questioning through Guided Journalling",
+    event: "BSEd Science Classroom-Based Action Research Colloquium, USeP College of Education",
+  },
+];
 ---
 
-<BaseListing
-    title={PAGES.talks.title}
-    subtitle={PAGES.talks.subtitle}
-    collection="talks"
-/>
+<BaseLayout title="Talks & Presentations">
+  <main class="talks-page">
+    <header class="talks-header">
+      <h1>Talks & Presentations</h1>
+      <p>
+        Invited talks, workshops, and research presentations in science
+        education and academic research.
+      </p>
+    </header>
+
+    <section class="talks-section">
+      <h2>Invited Talks & Workshops</h2>
+
+      <div class="talks-list">
+        {invitedTalks.map((talk) => (
+          <article class="talk-entry">
+            <div class="talk-date">
+              {talk.date}
+              {talk.upcoming && (
+                <span class="talk-upcoming">Upcoming</span>
+              )}
+            </div>
+
+            <div class="talk-details">
+              <p class="talk-role">{talk.role}</p>
+
+              <h3>
+                {talk.url ? (
+                  <a
+                    href={talk.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    {talk.title} ↗
+                  </a>
+                ) : (
+                  talk.title
+                )}
+              </h3>
+
+              <p class="talk-event">{talk.event}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="talks-section">
+      <h2>Research Presentations</h2>
+
+      <div class="talks-list">
+        {researchPresentations.map((presentation) => (
+          <article class="talk-entry">
+            <div class="talk-date">{presentation.date}</div>
+
+            <div class="talk-details">
+              <p class="talk-role">{presentation.role}</p>
+              <h3>{presentation.title}</h3>
+              <p class="talk-event">{presentation.event}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .talks-page {
+    width: min(100% - 3rem, 1000px);
+    margin: 0 auto;
+    padding: 3rem 0 4rem;
+  }
+
+  .talks-header {
+    margin-bottom: 3rem;
+  }
+
+  .talks-header h1 {
+    margin: 0 0 0.6rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 600;
+  }
+
+  .talks-header p {
+    max-width: 620px;
+    margin: 0;
+    color: #70665b;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .talks-section {
+    margin-top: 3rem;
+  }
+
+  .talks-section h2 {
+    margin: 0 0 1rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+  }
+
+  .talks-list {
+    border-top: 1px solid #eaddc6;
+  }
+
+  .talk-entry {
+    display: grid;
+    grid-template-columns: 155px minmax(0, 1fr);
+    gap: 2rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid #eaddc6;
+  }
+
+  .talk-date {
+    color: #70665b;
+    font-size: 0.85rem;
+    line-height: 1.6;
+  }
+
+  .talk-upcoming {
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.2rem 0.55rem;
+    border-radius: 3px;
+    background: #f1e8d7;
+    color: #9b482f;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  .talk-role {
+    margin: 0 0 0.45rem;
+    color: #b84c30;
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+
+  .talk-details h3 {
+    margin: 0 0 0.55rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .talk-details h3 a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+
+  .talk-details h3 a:hover {
+    color: #b84c30;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .talk-event {
+    margin: 0;
+    color: #70665b;
+    font-size: 0.85rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .talks-page {
+      width: min(100% - 2rem, 1000px);
+      padding-top: 2rem;
+    }
+
+    .talk-entry {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+      padding: 1.3rem 0;
+    }
+
+    .talk-date {
+      font-size: 0.8rem;
+    }
+
+    .talk-details h3 {
+      font-size: 1.05rem;
+    }
+  }
+</style>

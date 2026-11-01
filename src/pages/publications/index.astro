@@ -1,14 +1,201 @@
+
 ---
-import BaseListing from "../../layouts/BaseListing.astro";
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { PAGES } from "../../config";
+import "../../styles/publications.css";
 
 if (PAGES.publications.isActive === false) {
-    return Astro.redirect("/404");
+  return Astro.redirect("/404");
 }
+
+const publications = await getCollection("publications");
+
+const getDateValue = (date?: string) => {
+  if (!date) return 0;
+  const parsed = Date.parse(date);
+  return Number.isNaN(parsed) ? 0 : parsed;
+};
+
+// Author photos and ORCID profiles
+const authorProfiles: Record<
+  string,
+  { orcid?: string; photo?: string }
+> = {
+  "mark justine n revano": {
+    orcid: "0009-0003-4573-4569",
+    photo: "/images/authors/mark-justine-revano.jpg",
+  },
+  "jarine a tanda": {
+    orcid: "0009-0005-2988-6970",
+    photo: "/images/authors/jarine-tanda.jpg",
+  },
+  "ronilo p antonio": {
+    orcid: "0000-0002-2832-7203",
+    photo: "/images/authors/ronilo-antonio.jpg",
+  },
+  "randy a tudy": {
+    orcid: "0000-0001-6535-6129",
+    photo: "/images/authors/randy-tudy.jpg",
+  },
+  "reynaldo m nogodula": {
+    orcid: "0000-0002-4654-8296",
+    photo: "/images/authors/reynaldo-nogodula.jpg",
+  },
+  "john carlo b quiatchon": {
+    orcid: "0009-0002-3550-1537",
+    photo: "/images/authors/john-carlo-quiachon.jpg",
+  },
+  "fhebie a walles": {
+    orcid: "0009-0002-4693-3810",
+  },
+};
+
+const normalizeName = (name: string) =>
+  name
+    .toLowerCase()
+    .replace(/[.,]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+const formatAuthors = (authors?: string) => {
+  if (!authors) return [];
+
+  return authors.split(";").map((name) => {
+    const fullName = name.trim();
+    const parts = fullName.split(/\s+/);
+    const surname = parts.pop() || "";
+
+    const initials = parts
+      .map((part) =>
+        part.replace(/[^A-Za-z]/g, "").charAt(0).toUpperCase()
+      )
+      .filter(Boolean)
+      .join(".");
+
+    const profile = authorProfiles[normalizeName(fullName)];
+
+    return {
+      display: `${surname}, ${initials}.`,
+      orcid: profile?.orcid,
+      photo: profile?.photo,
+    };
+  });
+};
+
+// Oldest to newest
+const sortedPublications = [...publications].sort(
+  (a, b) => getDateValue(a.data.date) - getDateValue(b.data.date)
+);
 ---
 
-<BaseListing
-    collection="publications"
-    title={PAGES.publications.title}
-    subtitle={PAGES.publications.subtitle}
-/>
+<BaseLayout title={PAGES.publications.title}>
+  <main class="publications-page">
+    <header class="publications-header">
+      <h1>Publications</h1>
+      <p>A collection of research papers and scientific articles.</p>
+    </header>
+
+    <section class="publication-list" aria-label="Publication list">
+      {sortedPublications.map((publication) => {
+        const data = publication.data;
+
+        const extra = data as typeof data & {
+          type?: string;
+          doi?: string;
+        };
+
+        const doi =
+          extra.doi ||
+          data.external_url?.match(/doi\.org\/(10\..+)/i)?.[1];
+
+        const year = data.date?.match(/\d{4}/)?.[0];
+        const authors = formatAuthors(data.author);
+
+        return (
+          <article class="publication-entry">
+            <div class="publication-image">
+              {data.image ? (
+                <img
+                  src={data.image}
+                  alt={`First page of ${data.title}`}
+                  loading="lazy"
+                />
+              ) : (
+                <div class="publication-image-placeholder">
+                  Publication
+                </div>
+              )}
+            </div>
+
+            <div class="publication-details">
+              <p class="publication-type">
+                {extra.type || "Journal Article"}
+              </p>
+
+              <h2>{data.title}</h2>
+
+              {data.journal && (
+                <p class="publication-journal">
+                  {data.journal}{year && ` (${year})`}
+                </p>
+              )}
+
+              {doi && (
+                <p class="publication-doi">
+                  <a
+                    href={`https://doi.org/${doi}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    DOI: {doi}
+                  </a>
+                </p>
+              )}
+
+              {authors.length > 0 && (
+                <div class="publication-authors">
+                  {authors.map((author, index) => (
+                    <>
+                      {index > 0 && "; "}
+
+                      <span class="publication-author-item">
+                        {author.photo && (
+                          <img
+                            class="publication-author-avatar"
+                            src={author.photo}
+                            alt=""
+                            loading="lazy"
+                          />
+                        )}
+
+                        <span>{author.display}</span>
+
+                        {author.orcid && (
+                          <a
+                            class="orcid-link"
+                            href={`https://orcid.org/${author.orcid}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label={`ORCID profile for ${author.display}`}
+                            title={`ORCID: ${author.orcid}`}
+                          >
+                            <img
+                              src="/images/orcid-id.svg"
+                              alt="ORCID"
+                              class="publication-orcid-icon"
+                            />
+                          </a>
+                        )}
+                      </span>
+                    </>
+                  ))}
+                </div>
+              )}
+            </div>
+          </article>
+        );
+      })}
+    </section>
+  </main>
+</BaseLayout>

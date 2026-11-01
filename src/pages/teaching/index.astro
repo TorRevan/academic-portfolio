@@ -1,12 +1,150 @@
+
 ---
-import BaseListing from "../../layouts/BaseListing.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { PAGES } from "../../config";
 
 if (PAGES.teaching.isActive === false) {
-    return Astro.redirect("/404");
+  return Astro.redirect("/404");
 }
 
 const { title, subtitle } = PAGES.teaching;
+
+const experiences = [
+  {
+    role: "Teaching Internship",
+    institution: "Davao City National High School",
+    details:
+      "Handled Grade 9 Science classes, including Science, Technology, and Engineering (STE) and general sections.",
+  },
+  {
+    role: "Volunteer Tutor",
+    institution: "Organization of the Nation's Scholars for Science and Education",
+    details:
+      "Tutored senior high school students in General Biology, General Chemistry, and Earth and Space Science.",
+  },
+  {
+    role: "Volunteer Tutor",
+    institution: "DOST-SEI Alliance of Agham Scholars",
+    details:
+      "Tutored first-year BSEd Science students in Inorganic and Analytical Chemistry.",
+  },
+];
 ---
 
-<BaseListing collection="teaching" title={title} subtitle={subtitle} />
+<BaseLayout title={title}>
+  <main class="teaching-page">
+    <header class="teaching-header">
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
+    </header>
+
+    <section class="teaching-section">
+      <h2>Teaching Experience</h2>
+
+      <div class="teaching-list">
+        {experiences.map((experience) => (
+          <article class="teaching-entry">
+            <div class="teaching-role">{experience.role}</div>
+
+            <div class="teaching-details">
+              <h3>{experience.institution}</h3>
+              <p>{experience.details}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+  </main>
+</BaseLayout>
+
+<style>
+  .teaching-page {
+    width: min(100% - 3rem, 1000px);
+    margin: 0 auto;
+    padding: 3rem 0 4rem;
+  }
+
+  .teaching-header {
+    margin-bottom: 3rem;
+  }
+
+  .teaching-header h1 {
+    margin: 0 0 0.6rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 600;
+  }
+
+  .teaching-header p {
+    max-width: 620px;
+    margin: 0;
+    color: #70665b;
+    font-size: 0.95rem;
+    line-height: 1.7;
+  }
+
+  .teaching-section {
+    margin-top: 3rem;
+  }
+
+  .teaching-section h2 {
+    margin: 0 0 1rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: 1.45rem;
+    font-weight: 600;
+  }
+
+  .teaching-list {
+    border-top: 1px solid #eaddc6;
+  }
+
+  .teaching-entry {
+    display: grid;
+    grid-template-columns: 240px minmax(0, 1fr);
+    gap: 2rem;
+    padding: 1.6rem 0;
+    border-bottom: 1px solid #eaddc6;
+  }
+
+  .teaching-role {
+    color: #b84c30;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.6;
+  }
+
+  .teaching-details h3 {
+    margin: 0 0 0.55rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+
+  .teaching-details p {
+    margin: 0;
+    color: #70665b;
+    font-size: 0.88rem;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 640px) {
+    .teaching-page {
+      width: min(100% - 2rem, 1000px);
+      padding-top: 2rem;
+    }
+
+    .teaching-entry {
+      grid-template-columns: 1fr;
+      gap: 0.4rem;
+      padding: 1.3rem 0;
+    }
+
+    .teaching-details h3 {
+      font-size: 1.05rem;
+    }
+  }
+</style>

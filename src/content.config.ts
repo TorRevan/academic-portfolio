@@ -9,6 +9,7 @@ const publications = defineCollection({
         author: z.string().optional(),
         date: z.string().optional(),
         journal: z.string().optional(),
+        doi: z.string().optional(),
         external_url: z.string().optional(),
         image: z.string().optional(),
         description: z.string().optional(),

@@ -1,14 +1,37 @@
+
 ---
-import BaseListing from "../../layouts/BaseListing.astro";
+import BaseLayout from "../../layouts/BaseLayout.astro";
 import { PAGES } from "../../config";
 
 if (PAGES.projects.isActive === false) {
-    return Astro.redirect("/404");
+  return Astro.redirect("/404");
 }
 ---
 
-<BaseListing
-    title={PAGES.projects.title}
-    subtitle={PAGES.projects.subtitle}
-    collection="projects"
-/>
+<BaseLayout title="Projects">
+  <main class="projects-page">
+    <h1>Projects</h1>
+    <p>This section is under construction :((</p>
+  </main>
+</BaseLayout>
+
+<style>
+  .projects-page {
+    width: min(100% - 3rem, 1000px);
+    margin: 0 auto;
+    padding: 3rem 0 4rem;
+  }
+
+  .projects-page h1 {
+    margin: 0 0 0.6rem;
+    color: #29231c;
+    font-family: Georgia, serif;
+    font-size: clamp(2rem, 4vw, 2.6rem);
+    font-weight: 600;
+  }
+
+  .projects-page p {
+    color: #70665b;
+    font-size: 0.95rem;
+  }
+</style>
