@@ -31,12 +31,12 @@ export const THEMES: Record<string, Theme> = {
         accent: '#b84c30',
     },
     dark_notepad: {
-        isDark: true,
-        background: '#241f1c',
-        surface: '#241f1c',
-        foreground: '#e6dfd3',
-        muted: '#8a7d71',
-        border: '#3d342d',
-        accent: '#d97757',
-    }
+    isDark: true,
+    background: "#211c19",
+    surface: "#2b2420",
+    foreground: "#f2e9dc",
+    muted: "#b8aa9a",
+    border: "#453a33",
+    accent: "#e08062",
+}
 };

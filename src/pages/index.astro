@@ -1,3 +1,4 @@
+
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 
@@ -71,8 +72,13 @@ const selectedWork = [
           </p>
 
           <div class="home-intro-actions">
-            <a href="/files/Mark-Justine-Revano-CV.pdf"
-download="Mark-Justine-Revano-CV.pdf" class="home-intro-button">View My CV</a>
+            <a
+              href="/files/Mark-Justine-Revano-CV.pdf"
+              download="Mark-Justine-Revano-CV.pdf"
+              class="home-intro-button"
+            >
+              View My CV
+            </a>
             <a href="#contact" class="home-intro-contact">Contact Me</a>
           </div>
         </div>
@@ -146,7 +152,6 @@ download="Mark-Justine-Revano-CV.pdf" class="home-intro-button">View My CV</a>
 
       <div class="home-about-grid">
 
-        <!-- ABOUT ME TEXT -->
         <div class="home-about-main">
           <p class="home-eyebrow">ABOUT ME</p>
 
@@ -173,7 +178,6 @@ download="Mark-Justine-Revano-CV.pdf" class="home-intro-button">View My CV</a>
           </p>
         </div>
 
-        <!-- CLASSROOM PHOTOGRAPH -->
         <figure class="home-about-image">
           <img
             src="/images/about-science-activity.png"
@@ -269,20 +273,87 @@ download="Mark-Justine-Revano-CV.pdf" class="home-intro-button">View My CV</a>
           Science Educator · Independent Scholar
         </p>
 
-        <div class="contact-details">
+        <!-- SOCIAL LINKS -->
+        <div class="contact-social-links">
 
-          <a href="mailto:markjustinerevano@gmail.com">
-            <span aria-hidden="true">✉</span>
-            markjustinerevano@gmail.com
+          <!-- Email -->
+          <a
+            href="mailto:markjustinerevano@gmail.com"
+            aria-label="Email"
+            title="Email"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
           </a>
 
+          <!-- LinkedIn -->
           <a
-            href="YOUR_LINKEDIN_URL"
+            href="https://www.linkedin.com/in/mark-justine-revano/"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="LinkedIn"
+            title="LinkedIn"
           >
-            <span aria-hidden="true">in</span>
-            LinkedIn
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="4" />
+              <path d="M8 10v7m0-10v.01M12 17v-7m0 3a3 3 0 0 1 6 0v4" />
+            </svg>
+          </a>
+
+          <!-- ResearchGate -->
+          <a
+            href="https://www.researchgate.net/profile/Mark-Justine-Revano"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ResearchGate"
+            title="ResearchGate"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7">
+              <rect x="2.5" y="3.5" width="19" height="17" rx="4" />
+              <text x="12" y="15.2" text-anchor="middle" fill="currentColor" stroke="none" font-size="8" font-weight="600">RG</text>
+            </svg>
+          </a>
+
+          <!-- Facebook -->
+          <a
+            href="https://www.facebook.com/markjustinerevano"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            title="Facebook"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M13.5 20v-7h2.3l.4-2.7h-2.7V8.5c0-.8.4-1.3 1.4-1.3h1.4V4.8c-.3 0-1.1-.1-2.1-.1-2.1 0-3.5 1.3-3.5 3.7v1.9H8.3V13h2.4v7" />
+            </svg>
+          </a>
+
+          <!-- Google Scholar -->
+          <a
+            href="https://scholar.google.com/citations?user=hAhw7I0AAAAJ&hl=en"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Google Scholar"
+            title="Google Scholar"
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m2 9 10-5 10 5-10 5L2 9Z" />
+              <path d="M6 11v5c3.7 2.6 8.3 2.6 12 0v-5" />
+              <path d="M22 9v6" />
+            </svg>
+          </a>
+
+          <!-- ORCID -->
+          <a
+            href="https://orcid.org/0009-0003-4573-4569"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="ORCID"
+            title="ORCID"
+          >
+            <img src="/images/orcid-id.svg" alt="" />
           </a>
 
         </div>

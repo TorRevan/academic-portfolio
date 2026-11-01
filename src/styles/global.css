@@ -1730,3 +1730,174 @@ figure {
 .home-eyebrow {
   color: #B84C30 !important;
 }
+/* =========================================
+   DARK MODE — TEXT READABILITY
+   ========================================= */
+
+html[data-theme="dark"] .home-intro-copy h1,
+html[data-theme="dark"] .home-profile-item h3,
+html[data-theme="dark"] .talks-header h1,
+html[data-theme="dark"] .talks-section h2,
+html[data-theme="dark"] .talk-details h3,
+html[data-theme="dark"] .teaching-header h1,
+html[data-theme="dark"] .teaching-section h2,
+html[data-theme="dark"] .teaching-details h3,
+html[data-theme="dark"] .publications-header h1,
+html[data-theme="dark"] .publication-details h2,
+html[data-theme="dark"] .projects-page h1 {
+  color: #F2E9DC !important;
+}
+
+html[data-theme="dark"] .home-intro-description,
+html[data-theme="dark"] .home-about-text,
+html[data-theme="dark"] .home-profile-item > p:not(.home-eyebrow),
+html[data-theme="dark"] .talks-header > p,
+html[data-theme="dark"] .talk-date,
+html[data-theme="dark"] .talk-event,
+html[data-theme="dark"] .teaching-header > p,
+html[data-theme="dark"] .teaching-date,
+html[data-theme="dark"] .teaching-details > p:not(.teaching-role),
+html[data-theme="dark"] .publication-journal,
+html[data-theme="dark"] .publication-authors,
+html[data-theme="dark"] .projects-page > p {
+  color: #B8AA9A !important;
+}
+
+/* =========================================
+   DARK MODE — PORTFOLIO REFINEMENTS
+   ========================================= */
+
+/* Homepage links */
+html[data-theme="dark"] .home-intro-contact {
+  color: #F2E9DC !important;
+  text-decoration-color: #E08062;
+}
+
+html[data-theme="dark"] .home-intro-contact:hover {
+  color: #E08062 !important;
+}
+
+/* Recent Work & Publications cards */
+html[data-theme="dark"] .home-publication-card {
+  background: #2B2420 !important;
+  border: 1px solid #453A33 !important;
+  box-shadow: none !important;
+}
+
+html[data-theme="dark"] .home-publication-body h3,
+html[data-theme="dark"] .home-publication-body h3 a {
+  color: #F2E9DC !important;
+}
+
+html[data-theme="dark"] .home-publication-meta {
+  color: #B8AA9A !important;
+}
+
+html[data-theme="dark"] .home-publication-number,
+html[data-theme="dark"] .home-publication-link {
+  color: #E08062 !important;
+}
+
+html[data-theme="dark"] .home-publication-type {
+  background: #40342B !important;
+  color: #E8B39E !important;
+}
+
+/* Talks page */
+html[data-theme="dark"] .talks-header h1,
+html[data-theme="dark"] .talks-section h2,
+html[data-theme="dark"] .talk-details h3,
+html[data-theme="dark"] .talk-details h3 a {
+  color: #F2E9DC !important;
+}
+
+html[data-theme="dark"] .talks-header p,
+html[data-theme="dark"] .talk-date,
+html[data-theme="dark"] .talk-event {
+  color: #B8AA9A !important;
+}
+
+/* Publications page */
+html[data-theme="dark"] .publications-header h1,
+html[data-theme="dark"] .publication-details h2 {
+  color: #F2E9DC !important;
+}
+
+html[data-theme="dark"] .publication-journal,
+html[data-theme="dark"] .publication-authors {
+  color: #B8AA9A !important;
+}
+
+/* Keep accent details warm */
+html[data-theme="dark"] .home-eyebrow,
+html[data-theme="dark"] .talk-role,
+html[data-theme="dark"] .publication-type {
+  color: #E08062 !important;
+}
+
+/* Horizontal social icon links */
+.contact-social-links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1.15rem;
+  margin-top: 1.5rem;
+}
+
+.contact-social-links a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  color: var(--foreground);
+  text-decoration: none;
+  border-radius: 50%;
+  transition: color 0.2s ease, background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.contact-social-links a:hover {
+  color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 12%, transparent);
+  transform: translateY(-3px);
+}
+
+.contact-social-links a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+.contact-social-links svg {
+  width: 32px;
+  height: 32px;
+}
+
+.contact-social-links img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 0;
+}
+
+@media (max-width: 640px) {
+  .contact-social-links {
+    gap: 0.75rem;
+  }
+}
+/* Social icons on the dark contact panel */
+.contact-social-links a,
+.contact-social-links a:visited {
+  color: #F2E9DC !important;
+}
+
+.contact-social-links svg {
+  color: #F2E9DC;
+  stroke: currentColor;
+}
+
+.contact-social-links a:hover {
+  color: #E08062 !important;
+  background: rgba(224, 128, 98, 0.12);
+}
